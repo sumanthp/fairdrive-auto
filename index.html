@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FairDrive Auto</title>
+    <meta
+      name="description"
+      content="AI-native auto insurance experience for immigrants and first-time U.S. drivers."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="FairDrive navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">F</div>
+          <div>
+            <p class="brand-name">FairDrive</p>
+            <p class="brand-subtitle">Auto Passport</p>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Primary">
+          <button class="nav-item active" data-view="garage" type="button">
+            <span aria-hidden="true">Garage</span>
+          </button>
+          <button class="nav-item" data-view="quote" type="button">
+            <span aria-hidden="true">Quote</span>
+          </button>
+          <button class="nav-item" data-view="passport" type="button">
+            <span aria-hidden="true">Passport</span>
+          </button>
+          <button class="nav-item" data-view="estimator" type="button">
+            <span aria-hidden="true">Estimator</span>
+          </button>
+          <button class="nav-item" data-view="coach" type="button">
+            <span aria-hidden="true">Coach</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="eyebrow">MVP focus</p>
+          <p>Explain a costly quote, build evidence, and request better options.</p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI-native auto insurance</p>
+            <h1>Your driving history did not start when you landed in the U.S.</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button" type="button" aria-label="Notifications">
+              <span aria-hidden="true">!</span>
+            </button>
+            <button class="profile-button" type="button">
+              <span class="profile-avatar" aria-hidden="true">SP</span>
+              <span>Sumanth</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="hero-panel">
+          <div class="hero-copy">
+            <p class="eyebrow">Current policy insight</p>
+            <h2>$386/mo estimated premium</h2>
+            <p>
+              Your rate appears elevated because the profile has limited U.S.
+              insurance history and the vehicle has above-average repair cost.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-button" data-view-target="quote" type="button">
+                Explain my quote
+              </button>
+              <button class="secondary-button" data-view-target="estimator" type="button">
+                Check another car
+              </button>
+            </div>
+          </div>
+          <div class="vehicle-stage" aria-label="Interactive 3D vehicle garage">
+            <div class="model-toolbar">
+              <label>
+                Vehicle model
+                <select id="garageVehicleSelect">
+                  <option value="accord">2023 Honda Accord</option>
+                  <option value="camry">2023 Toyota Camry</option>
+                  <option value="bmw">2023 BMW 330i</option>
+                  <option value="tesla">2023 Tesla Model 3</option>
+                  <option value="crv">2023 Honda CR-V</option>
+                </select>
+              </label>
+              <span id="vehicleDesignLabel">Mid-size sedan</span>
+            </div>
+            <div id="vehicleViewer" class="vehicle-viewer" aria-label="3D vehicle model viewer"></div>
+            <div class="hotspot hotspot-front" data-coverage="Collision">
+              <span></span>
+            </div>
+            <div class="hotspot hotspot-glass" data-coverage="Comprehensive">
+              <span></span>
+            </div>
+            <div class="hotspot hotspot-cabin" data-coverage="Medical">
+              <span></span>
+            </div>
+            <div class="coverage-popover" id="coveragePopover">
+              <p class="eyebrow">Coverage</p>
+              <strong>Collision</strong>
+              <span>Protects your car after an accident with another vehicle or object.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="view-grid active" data-view-panel="garage">
+          <article class="panel large-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Garage</p>
+                <h3 id="selectedVehicleName">2023 Honda Accord</h3>
+              </div>
+              <span class="status-pill warning">Coverage gaps</span>
+            </div>
+            <div class="coverage-map">
+              <div class="coverage-row">
+                <span>Liability</span>
+                <strong class="good">$100k / $300k</strong>
+              </div>
+              <div class="coverage-row">
+                <span>Collision deductible</span>
+                <strong>$500</strong>
+              </div>
+              <div class="coverage-row">
+                <span>Comprehensive</span>
+                <strong class="good">Active</strong>
+              </div>
+              <div class="coverage-row">
+                <span>Uninsured motorist</span>
+                <strong class="warn">Missing</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <p class="eyebrow">Insurance Passport</p>
+            <h3>62% complete</h3>
+            <div class="progress-track">
+              <span style="width: 62%"></span>
+            </div>
+            <ul class="task-list">
+              <li class="done">U.S. license added</li>
+              <li class="done">Vehicle verified</li>
+              <li>Foreign license pending</li>
+              <li>No-claims proof pending</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <p class="eyebrow">Savings path</p>
+            <h3>3 actions found</h3>
+            <ul class="task-list">
+              <li>Upload no-claims letter</li>
+              <li>Compare $1,000 deductible</li>
+              <li>Review uninsured motorist gap</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="view-grid" data-view-panel="quote">
+          <article class="panel large-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">AI quote explainer</p>
+                <h3>Upload or review your current policy</h3>
+              </div>
+              <span class="status-pill">Draft flow</span>
+            </div>
+            <label class="upload-zone">
+              <input id="quoteUpload" type="file" accept=".pdf,.png,.jpg,.jpeg" />
+              <span class="upload-icon" aria-hidden="true">+</span>
+              <strong>Drop your quote or policy here</strong>
+              <small>PDF, JPG, or PNG. This skeleton simulates extraction.</small>
+            </label>
+            <div class="explanation-card" id="quoteExplanation">
+              <p class="eyebrow">Example explanation</p>
+              <p>
+                Your premium appears high because the profile has limited prior U.S.
+                insurance history, the collision deductible is low, and uninsured
+                motorist coverage is missing.
+              </p>
+            </div>
+          </article>
+
+          <article class="panel">
+            <p class="eyebrow">Quote summary</p>
+            <div class="metric-row">
+              <span>Monthly premium</span>
+              <strong>$386</strong>
+            </div>
+            <div class="metric-row">
+              <span>Deductible</span>
+              <strong>$500</strong>
+            </div>
+            <div class="metric-row">
+              <span>Renewal</span>
+              <strong>42 days</strong>
+            </div>
+          </article>
+        </section>
+
+        <section class="view-grid" data-view-panel="passport">
+          <article class="panel large-panel">
+            <p class="eyebrow">Auto Insurance Passport</p>
+            <h3>Evidence that helps tell your full driving story</h3>
+            <div class="passport-grid">
+              <button class="passport-tile complete" type="button">U.S. license</button>
+              <button class="passport-tile" type="button">Foreign license</button>
+              <button class="passport-tile" type="button">No-claims proof</button>
+              <button class="passport-tile complete" type="button">Vehicle</button>
+              <button class="passport-tile" type="button">Current policy</button>
+              <button class="passport-tile" type="button">Drive score</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <p class="eyebrow">Privacy</p>
+            <h3>User controlled</h3>
+            <p class="muted">
+              Immigration documents should stay optional unless legally required.
+              The product should ask for consent before AI processing or partner sharing.
+            </p>
+          </article>
+        </section>
+
+        <section class="view-grid" data-view-panel="estimator">
+          <article class="panel large-panel">
+            <p class="eyebrow">Before-you-buy estimator</p>
+            <h3>Check insurance cost before choosing a car</h3>
+            <form class="estimator-form" id="estimatorForm">
+              <label>
+                Vehicle
+                <select id="vehicleSelect">
+                  <option value="accord">2023 Honda Accord</option>
+                  <option value="camry">2023 Toyota Camry</option>
+                  <option value="bmw">2023 BMW 330i</option>
+                  <option value="tesla">2023 Tesla Model 3</option>
+                  <option value="crv">2023 Honda CR-V</option>
+                </select>
+              </label>
+              <label>
+                U.S. insurance history
+                <select id="historySelect">
+                  <option value="none">No prior U.S. policy</option>
+                  <option value="short">Less than 1 year</option>
+                  <option value="long">1+ year</option>
+                </select>
+              </label>
+              <button class="primary-button" type="submit">Estimate</button>
+            </form>
+            <div class="estimate-result" id="estimateResult">
+              <span>Estimated range</span>
+              <strong>$310 - $430/mo</strong>
+              <p>High repair costs and no prior U.S. insurance history can increase the range.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="view-grid" data-view-panel="coach">
+          <article class="panel large-panel">
+            <p class="eyebrow">Premium reduction coach</p>
+            <h3>Next best actions</h3>
+            <div class="coach-list">
+              <button type="button">
+                <strong>Upload foreign no-claims letter</strong>
+                <span>Can help an agent package your profile for partner review.</span>
+              </button>
+              <button type="button">
+                <strong>Compare deductible options</strong>
+                <span>See monthly cost impact before changing coverage.</span>
+              </button>
+              <button type="button">
+                <strong>Review vehicle alternatives</strong>
+                <span>Some models may cost far less to insure for new U.S. drivers.</span>
+              </button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="car-viewer.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
