@@ -83,6 +83,17 @@ The 3D viewer imports Three.js from a CDN, so the browser needs internet access.
 - Add licensed-agent handoff before giving regulated product recommendations.
 - Use explicit consent for document upload, AI processing, and partner sharing.
 
+## License
+
+This project is licensed under the **Apache License 2.0 with Commons Clause v1.0**. 
+
+This means:
+- **Free for personal and internal use.**
+- **No Commercial Sale/Hosting:** You cannot sell the software or provide it as a paid service (e.g., hosting, support, or consulting where the value is derived substantially from the software) without explicit permission.
+- **Licensor retains all rights:** The original author (Sumanth Polisetty) retains the right to distribute and sell the software commercially.
+
+See the [LICENSE](LICENSE) file for the full text.
+
 ## One-Line Pitch
 
 FairDrive Auto helps new-to-U.S. drivers understand expensive premiums, build an auto insurance profile, and find a path toward fairer options.
