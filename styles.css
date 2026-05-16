@@ -701,6 +701,360 @@ p {
   }
 }
 
+/* ── FairScore Form ─────────────────────────────────────────────────────── */
+
+.fs-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.fs-form-grid label,
+.fairscore-form label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.fs-form-grid select,
+.fairscore-form select {
+  width: 100%;
+  min-height: 2.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 0 0.75rem;
+  font-size: 0.9rem;
+  text-transform: none;
+}
+
+.fs-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--soft);
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.check-label input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--brand);
+}
+
+/* ── FairScore Result ────────────────────────────────────────────────────── */
+
+.fairscore-result {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.score-display {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.score-gauge {
+  position: relative;
+  width: 9rem;
+  flex: 0 0 9rem;
+}
+
+.score-gauge svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.gauge-track {
+  fill: none;
+  stroke: rgba(255,255,255,0.08);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 0 172.8;
+  transition: stroke-dasharray 0.8s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.8s;
+}
+
+.score-number {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+}
+
+.score-label {
+  text-align: center;
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.score-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.score-tier {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.score-tier.tier-green  { color: var(--brand); }
+.score-tier.tier-good   { color: #7ee8c0; }
+.score-tier.tier-fair   { color: var(--brand-2); }
+.score-tier.tier-warn   { color: var(--warn); }
+.score-tier.tier-danger { color: var(--danger); }
+
+.score-bench {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* ── Factor Bars ─────────────────────────────────────────────────────────── */
+
+.factor-bars {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.factor-bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--soft);
+}
+
+.factor-track {
+  height: 0.45rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.factor-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--brand);
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Score Narrative ─────────────────────────────────────────────────────── */
+
+.score-narrative {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.narrative-group {
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.025);
+}
+
+.narrative-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem !important;
+}
+
+.narrative-group ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--soft);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* ── Premium Comparison ──────────────────────────────────────────────────── */
+
+.premium-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.premium-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.03);
+}
+
+.premium-block.fair {
+  border-color: rgba(41, 211, 162, 0.35);
+  background: rgba(41, 211, 162, 0.07);
+}
+
+.pb-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.pb-amount {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--brand);
+  line-height: 1;
+}
+
+.trad-amount {
+  color: var(--soft);
+}
+
+.pb-sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.savings-banner {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(41, 211, 162, 0.4);
+  border-radius: var(--radius);
+  background: rgba(41, 211, 162, 0.12);
+  margin-bottom: 0.5rem;
+}
+
+.savings-banner strong {
+  font-size: 1.5rem;
+  color: var(--brand);
+}
+
+.savings-banner p {
+  font-size: 0.82rem;
+  color: var(--soft);
+}
+
+/* ── AI Coach ────────────────────────────────────────────────────────────── */
+
+.coach-item {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  text-align: left;
+  transition: border-color 0.18s;
+}
+
+.coach-item:hover {
+  border-color: rgba(41, 211, 162, 0.3);
+}
+
+.coach-item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.coach-item-header strong {
+  line-height: 1.35;
+}
+
+.savings-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(41, 211, 162, 0.45);
+  border-radius: 999px;
+  background: rgba(41, 211, 162, 0.12);
+  color: var(--brand);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.coach-item > span:not(.savings-badge) {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.coach-action {
+  color: var(--brand-2) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700;
+}
+
+/* ── Responsive adjustments for new panels ───────────────────────────────── */
+
+@media (max-width: 1050px) {
+  .fs-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .score-narrative {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .fs-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-compare {
+    grid-template-columns: 1fr;
+  }
+
+  .score-display {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ── Marketing page ──────────────────────────────────────────────────────── */
+
 .marketing-body {
   background:
     radial-gradient(circle at 78% 10%, rgba(41, 211, 162, 0.18), transparent 26rem),
