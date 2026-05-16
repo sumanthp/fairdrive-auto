@@ -290,7 +290,7 @@ p {
   top: 1rem;
   z-index: 3;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 0.75rem;
   max-width: calc(100% - 2rem);
   padding: 0.75rem;
@@ -403,13 +403,9 @@ p {
 }
 
 .view-grid {
-  display: none;
+  display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.8fr);
   gap: 1.25rem;
-}
-
-.view-grid.active {
-  display: grid;
 }
 
 .panel {
@@ -450,6 +446,18 @@ p {
   border-color: rgba(255, 200, 87, 0.38);
   background: rgba(255, 200, 87, 0.12);
   color: var(--warn);
+}
+
+.status-pill.success {
+  border-color: rgba(41, 211, 162, 0.38);
+  background: rgba(41, 211, 162, 0.12);
+  color: var(--brand);
+}
+
+.status-pill.danger {
+  border-color: rgba(255, 107, 107, 0.38);
+  background: rgba(255, 107, 107, 0.12);
+  color: var(--danger);
 }
 
 .coverage-map,
@@ -525,6 +533,7 @@ p {
   border-radius: var(--radius);
   background: rgba(99, 179, 255, 0.07);
   text-align: center;
+  cursor: pointer;
 }
 
 .upload-zone input {
@@ -574,6 +583,16 @@ p {
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   font-weight: 800;
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.18s;
+}
+
+.passport-tile:hover {
+  border-color: rgba(99, 179, 255, 0.35);
 }
 
 .passport-tile.complete {
@@ -581,11 +600,87 @@ p {
   background: rgba(41, 211, 162, 0.1);
 }
 
+.passport-tile.expanded {
+  border-color: rgba(99, 179, 255, 0.5);
+  background: rgba(99, 179, 255, 0.06);
+}
+
+.passport-tile-meta {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.passport-tile-filename {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--soft);
+  word-break: break-all;
+}
+
+.passport-expanded-panel {
+  grid-column: 1 / -1;
+  padding: 1.25rem;
+  border: 1px solid rgba(99, 179, 255, 0.35);
+  border-radius: var(--radius);
+  background: rgba(99, 179, 255, 0.05);
+  display: grid;
+  gap: 1rem;
+}
+
+.passport-consent-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--soft);
+  font-size: 0.88rem;
+}
+
+.passport-consent-row input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--brand);
+  flex: 0 0 auto;
+}
+
+.passport-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 107, 107, 0.35);
+  border-radius: var(--radius);
+  background: rgba(255, 107, 107, 0.08);
+  color: var(--danger);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.share-token-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(4px);
+}
+
+.share-token-card {
+  width: min(36rem, calc(100vw - 2rem));
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  display: grid;
+  gap: 1rem;
+}
+
 .estimator-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
   gap: 0.8rem;
-  align-items: end;
+  align-items: flex-end;
   margin: 1.25rem 0;
 }
 
@@ -685,8 +780,7 @@ p {
     padding: 1.25rem;
   }
 
-  .view-grid,
-  .view-grid.active {
+  .view-grid {
     grid-template-columns: 1fr;
   }
 
@@ -983,6 +1077,7 @@ p {
   color: var(--text);
   text-align: left;
   transition: border-color 0.18s;
+  width: 100%;
 }
 
 .coach-item:hover {
@@ -1336,4 +1431,111 @@ p {
   .marketing-hero h1 {
     font-size: 3.4rem;
   }
+}
+
+/* ── Streaming text in quote explainer ──────────────────────────────────── */
+
+.streaming-text {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Passport document upload area ─────────────────────────────────────── */
+
+.doc-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border: 1px dashed rgba(99, 179, 255, 0.5);
+  border-radius: var(--radius);
+  background: rgba(99, 179, 255, 0.07);
+  color: var(--brand-2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.doc-upload-btn:hover {
+  background: rgba(99, 179, 255, 0.14);
+  border-color: rgba(99, 179, 255, 0.75);
+}
+
+.doc-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.doc-status-badge.verified {
+  border: 1px solid rgba(41, 211, 162, 0.4);
+  background: rgba(41, 211, 162, 0.12);
+  color: var(--brand);
+}
+
+.doc-status-badge.pending {
+  border: 1px solid rgba(255, 200, 87, 0.4);
+  background: rgba(255, 200, 87, 0.12);
+  color: var(--warn);
+}
+
+.doc-status-badge.needs-review {
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 107, 107, 0.12);
+  color: var(--danger);
+}
+
+.doc-status-badge.not-uploaded {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+}
+
+/* ── Confidence score bar ─────────────────────────────────────────────── */
+
+.confidence-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.confidence-bar-track {
+  flex: 1;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--warn), var(--brand));
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Share token display ──────────────────────────────────────────────── */
+
+.share-token {
+  font-family: monospace;
+  letter-spacing: 0.12em;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--brand);
+  font-size: 0.9rem;
+  word-break: break-all;
 }

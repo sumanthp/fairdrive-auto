@@ -25,6 +25,9 @@
           <button class="nav-item active" data-view="garage" type="button">
             <span aria-hidden="true">Garage</span>
           </button>
+          <button class="nav-item" data-view="fairscore" type="button">
+            <span aria-hidden="true">FairScore</span>
+          </button>
           <button class="nav-item" data-view="quote" type="button">
             <span aria-hidden="true">Quote</span>
           </button>
@@ -40,8 +43,8 @@
         </nav>
 
         <div class="sidebar-card">
-          <p class="eyebrow">MVP focus</p>
-          <p>Explain a costly quote, build evidence, and request better options.</p>
+          <p class="eyebrow">FairCredit</p>
+          <p>Your driving history did not start when you landed in the U.S. FairScore credits international experience.</p>
         </div>
       </aside>
 
@@ -71,11 +74,11 @@
               insurance history and the vehicle has above-average repair cost.
             </p>
             <div class="hero-actions">
-              <button class="primary-button" data-view-target="quote" type="button">
-                Explain my quote
+              <button class="primary-button" data-view-target="fairscore" type="button">
+                Compute FairScore
               </button>
-              <button class="secondary-button" data-view-target="estimator" type="button">
-                Check another car
+              <button class="secondary-button" data-view-target="quote" type="button">
+                Explain my quote
               </button>
             </div>
           </div>
@@ -111,6 +114,7 @@
           </div>
         </section>
 
+        <!-- GARAGE VIEW -->
         <section class="view-grid active" data-view-panel="garage">
           <article class="panel large-panel">
             <div class="panel-header">
@@ -158,13 +162,169 @@
             <p class="eyebrow">Savings path</p>
             <h3>3 actions found</h3>
             <ul class="task-list">
-              <li>Upload no-claims letter</li>
-              <li>Compare $1,000 deductible</li>
-              <li>Review uninsured motorist gap</li>
+              <li>Upload no-claims letter — est. save $38/mo</li>
+              <li>Compare $1,000 deductible — est. save $32/mo</li>
+              <li>Add uninsured motorist coverage</li>
             </ul>
           </article>
         </section>
 
+        <!-- FAIRSCORE VIEW -->
+        <section class="view-grid" data-view-panel="fairscore">
+          <article class="panel large-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">FairScore — AI Pricing Intelligence</p>
+                <h3>Your multi-factor driver risk profile</h3>
+              </div>
+              <span class="status-pill" id="fairscoreStatusPill">Not computed</span>
+            </div>
+
+            <form class="fairscore-form" id="fairscoreForm">
+              <div class="fs-form-grid">
+                <label>
+                  Vehicle
+                  <select id="fsVehicle">
+                    <option value="accord">2023 Honda Accord</option>
+                    <option value="camry">2023 Toyota Camry</option>
+                    <option value="bmw">2023 BMW 330i</option>
+                    <option value="tesla">2023 Tesla Model 3</option>
+                    <option value="crv">2023 Honda CR-V</option>
+                  </select>
+                </label>
+                <label>
+                  State
+                  <select id="fsState">
+                    <option value="CA">California</option>
+                    <option value="TX">Texas</option>
+                    <option value="FL">Florida</option>
+                    <option value="NY">New York</option>
+                    <option value="IL">Illinois</option>
+                    <option value="WA">Washington</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="GA">Georgia</option>
+                    <option value="CO">Colorado</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="VA">Virginia</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MI">Michigan</option>
+                    <option value="OH">Ohio</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="WI">Wisconsin</option>
+                  </select>
+                </label>
+                <label>
+                  U.S. insurance history
+                  <select id="fsUsHistory">
+                    <option value="0">No prior U.S. policy</option>
+                    <option value="1">Less than 1 year</option>
+                    <option value="2">1–2 years</option>
+                    <option value="4">3–5 years</option>
+                    <option value="7">5+ years</option>
+                  </select>
+                </label>
+                <label>
+                  International driving years
+                  <select id="fsIntlHistory">
+                    <option value="0">None</option>
+                    <option value="1">1–2 years</option>
+                    <option value="3">3–4 years</option>
+                    <option value="5">5–9 years</option>
+                    <option value="10">10+ years</option>
+                  </select>
+                </label>
+                <label>
+                  Annual mileage
+                  <select id="fsMileage">
+                    <option value="4000">Under 5,000 mi</option>
+                    <option value="6500">5,000–7,500 mi</option>
+                    <option value="10000" selected>7,500–12,000 mi</option>
+                    <option value="16000">12,000–20,000 mi</option>
+                    <option value="25000">Over 20,000 mi</option>
+                  </select>
+                </label>
+                <label>
+                  Coverage level
+                  <select id="fsCoverage">
+                    <option value="basic">Basic (liability only)</option>
+                    <option value="standard" selected>Standard (full coverage)</option>
+                    <option value="premium">Premium (high limits)</option>
+                  </select>
+                </label>
+              </div>
+              <div class="fs-checks">
+                <label class="check-label">
+                  <input type="checkbox" id="fsCleanRecord" checked />
+                  Clean driving record (no at-fault incidents in 3 years)
+                </label>
+                <label class="check-label">
+                  <input type="checkbox" id="fsDefensive" />
+                  Completed a defensive driving course
+                </label>
+              </div>
+              <button class="primary-button" type="submit">Compute FairScore</button>
+            </form>
+
+            <div class="fairscore-result" id="fairscoreResult" hidden>
+              <div class="score-display">
+                <div class="score-gauge" id="scoreGauge">
+                  <svg viewBox="0 0 120 70" aria-hidden="true">
+                    <path class="gauge-track" d="M10,65 A55,55,0,0,1,110,65" />
+                    <path class="gauge-fill" id="gaugeFill" d="M10,65 A55,55,0,0,1,110,65" />
+                  </svg>
+                  <div class="score-number" id="scoreNumber">—</div>
+                  <div class="score-label">FairScore</div>
+                </div>
+                <div class="score-meta">
+                  <div class="score-tier" id="scoreTier">—</div>
+                  <p class="score-bench" id="scoreBench">Market average: 58</p>
+                </div>
+              </div>
+
+              <div class="factor-bars" id="factorBars"></div>
+
+              <div class="score-narrative" id="scoreNarrative"></div>
+            </div>
+          </article>
+
+          <article class="panel" id="premiumComparePanel" hidden>
+            <p class="eyebrow">Premium Estimate</p>
+            <div class="premium-compare">
+              <div class="premium-block fair">
+                <span class="pb-label">FairDrive</span>
+                <strong class="pb-amount" id="fairMonthly">—</strong>
+                <span class="pb-sub">per month</span>
+              </div>
+              <div class="premium-block trad">
+                <span class="pb-label">Traditional insurer</span>
+                <strong class="pb-amount trad-amount" id="tradMonthly">—</strong>
+                <span class="pb-sub">per month</span>
+              </div>
+            </div>
+            <div class="savings-banner" id="savingsBanner" hidden>
+              <span class="eyebrow">FairCredit savings</span>
+              <strong id="savingsAmount">—</strong>
+              <p>per month by crediting your international driving history</p>
+            </div>
+            <div class="metric-row" style="margin-top:0.75rem">
+              <span>Annual estimate</span>
+              <strong id="annualEstimate">—</strong>
+            </div>
+            <div class="metric-row">
+              <span>Premium range</span>
+              <strong id="premiumRange">—</strong>
+            </div>
+            <button class="secondary-button" data-view-target="coach" type="button" style="width:100%;margin-top:1rem">
+              See savings actions →
+            </button>
+          </article>
+        </section>
+
+        <!-- QUOTE VIEW -->
         <section class="view-grid" data-view-panel="quote">
           <article class="panel large-panel">
             <div class="panel-header">
@@ -178,14 +338,15 @@
               <input id="quoteUpload" type="file" accept=".pdf,.png,.jpg,.jpeg" />
               <span class="upload-icon" aria-hidden="true">+</span>
               <strong>Drop your quote or policy here</strong>
-              <small>PDF, JPG, or PNG. This skeleton simulates extraction.</small>
+              <small>PDF, JPG, or PNG. In production, Claude AI extracts every line item.</small>
             </label>
             <div class="explanation-card" id="quoteExplanation">
               <p class="eyebrow">Example explanation</p>
               <p>
                 Your premium appears high because the profile has limited prior U.S.
                 insurance history, the collision deductible is low, and uninsured
-                motorist coverage is missing.
+                motorist coverage is missing. The vehicle repair cost index is 62/100,
+                above the sedan average of 55.
               </p>
             </div>
           </article>
@@ -204,9 +365,14 @@
               <span>Renewal</span>
               <strong>42 days</strong>
             </div>
+            <div class="metric-row">
+              <span>Repair cost index</span>
+              <strong class="warn">62 / 100</strong>
+            </div>
           </article>
         </section>
 
+        <!-- PASSPORT VIEW -->
         <section class="view-grid" data-view-panel="passport">
           <article class="panel large-panel">
             <p class="eyebrow">Auto Insurance Passport</p>
@@ -225,12 +391,14 @@
             <p class="eyebrow">Privacy</p>
             <h3>User controlled</h3>
             <p class="muted">
-              Immigration documents should stay optional unless legally required.
-              The product should ask for consent before AI processing or partner sharing.
+              Immigration documents are optional. FairDrive asks for consent
+              before any AI processing or partner sharing. Country of birth is
+              never used as a pricing factor.
             </p>
           </article>
         </section>
 
+        <!-- ESTIMATOR VIEW -->
         <section class="view-grid" data-view-panel="estimator">
           <article class="panel large-panel">
             <p class="eyebrow">Before-you-buy estimator</p>
@@ -258,17 +426,23 @@
             </form>
             <div class="estimate-result" id="estimateResult">
               <span>Estimated range</span>
-              <strong>$310 - $430/mo</strong>
-              <p>High repair costs and no prior U.S. insurance history can increase the range.</p>
+              <strong>$310 – $430/mo</strong>
+              <p>High repair costs and no prior U.S. insurance history can increase the range. Use the FairScore estimator to see the impact of your international driving history.</p>
             </div>
           </article>
         </section>
 
+        <!-- COACH VIEW -->
         <section class="view-grid" data-view-panel="coach">
           <article class="panel large-panel">
-            <p class="eyebrow">Premium reduction coach</p>
-            <h3>Next best actions</h3>
-            <div class="coach-list">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">AI Premium Coach</p>
+                <h3 id="coachHeading">Next best actions</h3>
+              </div>
+              <span class="status-pill" id="coachPill">Compute FairScore first</span>
+            </div>
+            <div class="coach-list" id="coachList">
               <button type="button">
                 <strong>Upload foreign no-claims letter</strong>
                 <span>Can help an agent package your profile for partner review.</span>
@@ -283,11 +457,25 @@
               </button>
             </div>
           </article>
+
+          <article class="panel">
+            <p class="eyebrow">Total savings potential</p>
+            <div class="metric-row">
+              <span>All actions combined</span>
+              <strong id="totalSavingsDisplay">—</strong>
+            </div>
+            <p class="muted" style="margin-top:0.75rem;font-size:0.85rem;line-height:1.5">
+              These are planning estimates. Real savings depend on carrier appetite,
+              state regulations, and verified documentation. A licensed agent reviews
+              before any policy is bound.
+            </p>
+          </article>
         </section>
       </main>
     </div>
 
     <script type="module" src="car-viewer.js"></script>
+    <script src="ai-engine.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

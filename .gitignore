@@ -2,6 +2,16 @@ node_modules/
 dist/
 .env
 .env.*
+!.env.local.example
 *.log
 .DS_Store
 Thumbs.db
+
+# Next.js
+.next/
+out/
+.vercel
+next-env.d.ts
+
+# Uploads (local dev only — use S3 in production)
+uploads/
